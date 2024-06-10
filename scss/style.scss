@@ -1,5 +1,3 @@
-@use 'functions'as *;
-@use 'mixins'as *;
 @use 'variables'as *;
 
 // Temp
@@ -41,7 +39,7 @@ body {
 }
 
 main {
-    padding: 2rem;
+    padding: 4rem;
     background-color: $white;
     width: 70%;
     position: absolute;
@@ -69,7 +67,7 @@ main {
     max-width: 80%;
 }
 
-.upper input {
+input {
     font-size: 1.5rem;
     border: 1px solid $light-grey;
     border-radius: 5px;
@@ -77,10 +75,36 @@ main {
     margin: 5px 5px;
 }
 
+.upper input:hover,
+.upper input:focus {
+    border-color: $purple;
+    outline: none;
+}
+
+.req {
+    letter-spacing: 0;
+    color: $red;
+    display: none;
+}
+
+.div-invalid {
+    label {
+        color: $red;
+    }
+
+    input {
+        border-color: $red;
+    }
+
+    p {
+        display: block;
+    }
+}
+
 // Line
 hr {
     color: $light-grey;
-    width: 90%;
+    width: 95%;
 }
 
 button {
@@ -91,11 +115,14 @@ button {
     border: 1px solid $purple;
     border-radius: 50%;
     right: 5rem;
-    top: 6.5rem;
+    top: 8.4rem;
+    outline: none;
 }
 
 button:hover {
     cursor: pointer;
+    background-color: $offblack;
+    border-color: $offblack;
 }
 
 // Lower

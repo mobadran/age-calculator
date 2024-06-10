@@ -32,7 +32,7 @@ body {
 }
 
 main {
-  padding: 2rem;
+  padding: 4rem;
   background-color: hsl(0, 0%, 100%);
   width: 70%;
   position: absolute;
@@ -58,7 +58,7 @@ main {
   max-width: 80%;
 }
 
-.upper input {
+input {
   font-size: 1.5rem;
   border: 1px solid hsl(0, 0%, 86%);
   border-radius: 5px;
@@ -66,9 +66,31 @@ main {
   margin: 5px 5px;
 }
 
+.upper input:hover,
+.upper input:focus {
+  border-color: hsl(259, 100%, 65%);
+  outline: none;
+}
+
+.req {
+  letter-spacing: 0;
+  color: hsl(0, 100%, 67%);
+  display: none;
+}
+
+.div-invalid label {
+  color: hsl(0, 100%, 67%);
+}
+.div-invalid input {
+  border-color: hsl(0, 100%, 67%);
+}
+.div-invalid p {
+  display: block;
+}
+
 hr {
   color: hsl(0, 0%, 86%);
-  width: 90%;
+  width: 95%;
 }
 
 button {
@@ -79,11 +101,14 @@ button {
   border: 1px solid hsl(259, 100%, 65%);
   border-radius: 50%;
   right: 5rem;
-  top: 6.5rem;
+  top: 8.4rem;
+  outline: none;
 }
 
 button:hover {
   cursor: pointer;
+  background-color: hsl(0, 0%, 8%);
+  border-color: hsl(0, 0%, 8%);
 }
 
 .container {
