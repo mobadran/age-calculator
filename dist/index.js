@@ -1,42 +1,130 @@
 let invalid = false;
+
+// Calling the function when ANY key is pressed
+const yearIn = document.getElementById('year-in');
+yearIn.addEventListener("keypress", function (event) {
+    if (event.key === 'Enter') {
+        calculate()
+    }
+});
+const monthIn = document.getElementById('month-in');
+monthIn.addEventListener("keypress", function (event) {
+    if (event.key === 'Enter') {
+        calculate()
+    }
+});
+const dayIn = document.getElementById('day-in');
+dayIn.addEventListener("keypress", function (event) {
+    if (event.key === 'Enter') {
+        calculate()
+    }
+});
+
+
+function redden(which, why) {
+    switch (which) {
+        case 'day':
+            document.getElementById('day-div').classList.add('div-invalid');
+            switch (why) {
+                case 'range':
+                    document.getElementById('day-p').innerHTML = 'Must be a valid day';
+                    break;
+                case 'int':
+                    document.getElementById('day-p').innerHTML = 'Must be an integer';
+                    break;
+                case 'required':
+                    document.getElementById('day-p').innerHTML = 'This field is required';
+                    break;
+            }
+            break;
+        case 'month':
+            document.getElementById('month-div').classList.add('div-invalid');
+            switch (why) {
+                case 'range':
+                    document.getElementById('month-p').innerHTML = 'The month must be a valid month';
+                    break;
+                case 'int':
+                    document.getElementById('month-p').innerHTML = 'Must be an integer';
+                    break;
+                case 'required':
+                    document.getElementById('month-p').innerHTML = 'This field is required';
+                    break;
+            }
+            break;
+        case 'year':
+            document.getElementById('year-div').classList.add('div-invalid');
+            switch (why) {
+                case 'range':
+                    document.getElementById('year-p').innerHTML = 'Year must be in the past';
+                    break;
+                case 'int':
+                    document.getElementById('year-p').innerHTML = 'Must be an integer';
+                    break;
+                case 'required':
+                    document.getElementById('year-p').innerHTML = 'This field is required';
+                    break;
+            }
+            break;
+    }
+}
+
 // Is Valid Date
 function validDate(year, month, day) {
     const current = new Date();
-    if (year > current.getFullYear) {
-        document.getElementById('year-div').classList.add('div-invalid');
-        document.getElementById('year-p').innerHTML = 'The year must be in the past'
+    let monthNow = current.getMonth() + 1;
+    if (year > current.getFullYear()) {
+        redden('year', 'range');
         invalid = true;
+    } else if (year == current.getFullYear()) {
+        if (month > monthNow) {
+            redden('month', 'range');
+            invalid = true;
+            if (day > current.getDate()) {
+                console.log(day, current.getDate());
+                redden('day', 'range');
+                invalid = true;
+            }
+        } else if (month == monthNow) {
+            if (day > current.getDate()) {
+                redden('day', 'range');
+                invalid = true;
+            }
+        }
     }
     if (month < 1 || month > 12) {
-        document.getElementById('month-div').classList.add('div-invalid');
-        document.getElementById('month-p').innerHTML = 'The month must be a valid month'
+        redden('month', 'range');
         invalid = true;
     }
     if (day < 1 || day > 31) {
-        document.getElementById('day-div').classList.add('div-invalid');
-        document.getElementById('day-p').innerHTML = 'The day must be a valid day'
+        redden('day', 'range');
         invalid = true;
     }
 
     // Create a date object and check if the day matches (handles month/day combinations)
     const date = new Date(year, month - 1, day);
     if (date.getDate() != day) {
-        document.getElementById('day-div').classList.add('div-invalid');
-        document.getElementById('day-p').innerHTML = 'The day must be a valid day'
-        console.log(date.getDate(), " Hello ", day)
+        redden('day', 'range');
         invalid = true;
     }
     if (invalid) return false;
     return true;
 }
 
-// || date.getMonth() !== (month - 1) || 
-
+// Reset
+function reset(which) {
+    document.getElementById(`${which}-div`).classList.remove('div-invalid');
+    document.getElementById('day-p').classList.add('display-none');
+    document.getElementById('month-p').classList.add('display-none');
+    document.getElementById('year-p').classList.add('display-none');
+}
 
 // Calculating
 function calculateAge(year, month, day) {
     const today = new Date();
     const birthDate = new Date(year, month - 1, day); // Month is 0-indexed
+    if (year < 99 || year > 0) {
+        birthDate.setFullYear(year);
+    }
 
     let ageYears = today.getFullYear() - birthDate.getFullYear();
     let ageMonths = today.getMonth() - birthDate.getMonth();
@@ -63,103 +151,57 @@ function calculateAge(year, month, day) {
     };
 }
 
-
-
-
-
-
-
-
-
 function calculate() {
     const day = document.getElementById('day-in').value;
     const month = document.getElementById('month-in').value;
     const year = document.getElementById('year-in').value;
+    invalid = false;
 
-
-    if (!int(day)) {
-        document.getElementById('day-div').classList.add('div-invalid');
-        document.getElementById('day-p').innerHTML = 'Must be an integer';
+    if (!parseInt(day) && parseInt(day) !== 0) {
+        redden('day', 'int');
         invalid = true;
     }
-    if (!int(month)) {
-        document.getElementById('month-div').classList.add('div-invalid');
-        document.getElementById('month-p').innerHTML = 'Must be an integer';
+    if (!parseInt(month) && parseInt(month) !== 0) {
+        redden('month', 'int');
         invalid = true;
     }
-    if (!int(year)) {
-        document.getElementById('year-div').classList.add('div-invalid');
-        document.getElementById('year-p').innerHTML = 'Must be an integer';
+    if (!parseInt(year) && parseInt(year) !== 0) {
+        redden('year', 'int');
         invalid = true;
     }
     if (day == '') {
-        document.getElementById('day-div').classList.add('div-invalid');
-        document.getElementById('day-p').innerHTML = 'This field is required';
+        redden('day', 'required');
         invalid = true;
     }
     if (month == '') {
-        document.getElementById('month-div').classList.add('div-invalid');
-        document.getElementById('month-p').innerHTML = 'This field is required';
+        redden('month', 'required');
         invalid = true;
     }
     if (year == '') {
-        document.getElementById('year-div').classList.add('div-invalid');
-        document.getElementById('year-p').innerHTML = 'This field is required';
+        redden('year', 'required');
         invalid = true;
-    }
-    yearInt = int(year);
-    monthInt = int(month);
-    dayInt = int(day);
-
-    if (!validDate(yearInt, monthInt, dayInt)) {
-        return;
     }
 
     if (invalid) {
         return;
     }
 
+    yearInt = parseInt(year);
+    monthInt = parseInt(month);
+    dayInt = parseInt(day);
+
+
+    if (!validDate(yearInt, monthInt, dayInt)) {
+        return;
+    }
+
     let age = calculateAge(yearInt, monthInt, dayInt);
+
+    reset('day');
+    reset('month');
+    reset('year');
 
     document.getElementById('day').innerHTML = age['day'];
     document.getElementById('month').innerHTML = age['month'];
     document.getElementById('year').innerHTML = age['year'];
-}
-
-
-function int(value) {
-    const dist = {
-        '0': 0,
-        '1': 1,
-        '2': 2,
-        '3': 3,
-        '4': 4,
-        '5': 5,
-        '6': 6,
-        '7': 7,
-        '8': 8,
-        '9': 9
-    };
-
-    let num = 0;
-    let mult = 1;
-    let isNegative = false;
-    let startIndex = value.length - 1;
-
-    // Check for negative sign
-    if (value[0] === '-') {
-        isNegative = true;
-        startIndex = value.length - 2; // Skip the negative sign
-    }
-
-    for (let i = startIndex; i >= 0; i--) {
-        if (dist.hasOwnProperty(value[i])) {
-            num += dist[value[i]] * mult;
-            mult *= 10;
-        } else {
-            return false;
-        }
-    }
-
-    return isNegative ? -num : num;
 }

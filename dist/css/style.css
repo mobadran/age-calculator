@@ -88,6 +88,10 @@ input {
   display: block;
 }
 
+.display-none {
+  display: none;
+}
+
 hr {
   color: hsl(0, 0%, 86%);
   width: 95%;
