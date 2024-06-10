@@ -4,30 +4,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- displays site properly based on user's device -->
 
+  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32"
     href="./assets/images/favicon-32x32.png">
 
+
+  <!-- CSS -->
   <link rel="stylesheet" href="dist/css/style.css">
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap"
+    rel="stylesheet">
+
+  <!-- Title -->
   <title>Age calculator app</title>
 </head>
 
 <body>
+  <main>
+    <section class="upper">
+      <div class="upper-inps">
+        <label for="day-in" class="labels bold">DAY</label>
+        <input type="text" placeholder="DD" id="day-in" class="bold">
+      </div>
 
-  Day
-  DD
+      <div class="upper-inps">
+        <label for="month-in" class="labels bold">MONTH</label>
+        <input type="text" placeholder="MM" id="month-in" class="bold">
+      </div>
 
-  Month
-  MM
-
-  Year
-  YYYY
-
-  -- years
-  -- months
-  -- days
+      <div class="upper-inps">
+        <label for="year-in" class="labels bold">YEAR</label>
+        <input type="text" placeholder="YYYY" id="year-in" class="bold">
+      </div>
+    </section>
+    <div class="line">
+      <hr>
+      <button onclick="calculate()"><img src="assets/images/icon-arrow.svg"
+          alt="Arrow"></button>
+    </div>
+    <section>
+      <div class="container bold-italic"><span id="year"
+          class="number">--</span> year</div>
+      <div class="container bold-italic"><span id="month"
+          class="number">--</span> month</div>
+      <div class="container bold-italic"><span id="day" class="number">--</span>
+        day</div>
+    </section>
+  </main>
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge"
