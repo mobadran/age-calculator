@@ -201,3 +201,21 @@ button:hover {
     padding-left: 3rem;
   }
 }
+@media (max-height: 800px) {
+  .container {
+    font-size: 4rem;
+  }
+}
+@media (max-height: 600px) {
+  .container {
+    font-size: 3rem;
+  }
+}
+@media (max-height: 500px) {
+  main {
+    padding: 3rem;
+  }
+  .container {
+    font-size: 2rem;
+  }
+}
