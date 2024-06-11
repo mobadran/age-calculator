@@ -1,25 +1,69 @@
 let invalid = false;
 
+
+
 // Calling the function when ANY key is pressed
 const yearIn = document.getElementById('year-in');
+const monthIn = document.getElementById('month-in');
+const dayIn = document.getElementById('day-in');
+
 yearIn.addEventListener("keypress", function (event) {
     if (event.key === 'Enter') {
         calculate()
     }
 });
-const monthIn = document.getElementById('month-in');
 monthIn.addEventListener("keypress", function (event) {
     if (event.key === 'Enter') {
         calculate()
     }
 });
-const dayIn = document.getElementById('day-in');
 dayIn.addEventListener("keypress", function (event) {
     if (event.key === 'Enter') {
         calculate()
     }
 });
 
+
+// function inObject(obj, element) {
+//     if (Object.values(obj).indexOf(element) > -1) {
+//         return true;
+//     }
+//     return false;
+// }
+
+function arToEn(str) {
+    const arNums = {
+        '٠': '0',
+        '١': '1',
+        '٢': '2',
+        '٣': '3',
+        '٤': '4',
+        '٥': '5',
+        '٦': '6',
+        '٧': '7',
+        '٨': '8',
+        '٩': '9',
+        '0': '0',
+        '1': '1',
+        '2': '2',
+        '3': '3',
+        '4': '4',
+        '5': '5',
+        '6': '6',
+        '7': '7',
+        '8': '8',
+        '9': '9'
+    }
+    let ar = '';
+    for (let i = 0; i < str.length; i++) {
+        try {
+            ar += arNums[str[i]];
+        } catch {
+            ar += str[i];
+        }
+    }
+    return ar;
+}
 
 function redden(which, why) {
     switch (which) {
@@ -152,9 +196,14 @@ function calculateAge(year, month, day) {
 }
 
 function calculate() {
-    const day = document.getElementById('day-in').value;
-    const month = document.getElementById('month-in').value;
-    const year = document.getElementById('year-in').value;
+    const dayVal = document.getElementById('day-in').value;
+    const monthVal = document.getElementById('month-in').value;
+    const yearVal = document.getElementById('year-in').value;
+
+    const day = arToEn(dayVal);
+    const month = arToEn(monthVal);
+    const year = arToEn(yearVal);
+
     invalid = false;
 
     if (!parseInt(day) && parseInt(day) !== 0) {
