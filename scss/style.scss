@@ -1,195 +1,194 @@
-@use 'variables'as *;
+@use "variables" as *;
 
 // Temp
 .attribution {
-    display: none;
-    position: absolute;
-    bottom: 7rem;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1.5rem;
-    width: 350px;
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  font-size: 1.5rem;
+  width: fit-content;
 
-    a {
-        // text-decoration: none;
-        color: blue;
-        font-weight: 550;
-        font-style: italic;
-    }
+  a {
+    color: blue;
+    font-weight: 550;
+    font-style: italic;
+  }
 
-    /* Need a specific value to work */
+  /* Need a specific value to work */
 }
 
 // Fonts
 .bold {
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-style: normal;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
 .italic {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: italic;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: italic;
 }
 
 .bold-italic {
-    font-family: "Poppins", sans-serif;
-    font-weight: 800;
-    font-style: italic;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: italic;
 }
 
 // CSS Reset
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
 
 // Real Work
 body {
-    height: 100%;
-    background-color: $offwhite;
+  height: 100%;
+  background-color: $offwhite;
 }
 
 main {
-    padding: clamp(1rem, 5vw, 4rem);
-    background-color: $white;
-    width: 70%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 20px 20px clamp(100px, 50%, 200px) 20px;
+  padding: clamp(1rem, 5vw, 4rem);
+  background-color: $white;
+  width: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px 20px clamp(100px, 50%, 200px) 20px;
 }
 
 // Upper
 
 .upper {
-    font-size: clamp(0.5rem, 2vw, 0.8rem);
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin-bottom: 1.5rem;
-    color: $grey;
-    letter-spacing: 2px;
+  // font-size: clamp(0.5rem, 2vw, 0.8rem);
+  font-size: 1rem;
+  // display: grid;
+  // grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-bottom: 1.5rem;
+  color: $grey;
+  letter-spacing: 2px;
+  display: flex;
 }
 
 .upper-inps {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 80%;
 }
 
 input {
-    font-size: clamp(0.5rem, 3vw, 1.5rem);
-    border: 1px solid $light-grey;
-    border-radius: 5px;
-    padding: 10px clamp(0.1rem, 2vw, 20px);
-    margin: clamp(2px, 1vw, 5px);
+  // font-size: clamp(0.5rem, 3vw, 1.5rem);
+  font-size: 1rem;
+  border: 1px solid $light-grey;
+  border-radius: 5px;
+  padding: 10px clamp(0.1rem, 2vw, 20px);
+  margin: clamp(2px, 1vw, 5px);
 }
 
 .upper input:hover,
 .upper input:focus {
-    border-color: $purple;
-    outline: none;
+  border-color: $purple;
+  outline: none;
 }
 
 .req {
-    letter-spacing: 0;
-    color: $red;
-    display: none;
+  letter-spacing: 0;
+  color: $red;
+  display: none;
 }
 
 .div-invalid {
-    label {
-        color: $red;
-    }
+  label {
+    color: $red;
+  }
 
-    input {
-        border-color: $red;
-    }
+  input {
+    border-color: $red;
+  }
 
-    p {
-        display: block;
-    }
+  p {
+    display: block;
+  }
 }
 
 .display-none {
-    display: none;
+  display: none;
 }
 
 // Line
 .line {
-    position: relative;
-    width: 95%;
-    margin: 0 auto;
+  position: relative;
+  width: 95%;
+  margin: 0 auto;
 }
 
 hr {
-    position: relative;
-    color: $light-grey;
-    margin: 1rem 0;
+  position: relative;
+  color: $light-grey;
+  margin: 1rem 0;
 }
 
 button {
-    position: absolute;
-    right: 0.1rem;
-    top: 50%;
-    transform: translate(50%, -50%);
-    outline: none;
-    width: 5rem;
-    height: 5rem;
-    background-color: $purple;
-    border: 1px solid $purple;
-    border-radius: 50%;
+  position: absolute;
+  right: 0.1rem;
+  top: 50%;
+  transform: translate(50%, -50%);
+  outline: none;
+  width: 5rem;
+  height: 5rem;
+  background-color: $purple;
+  border: 1px solid $purple;
+  border-radius: 50%;
 }
 
 button:hover {
-    cursor: pointer;
-    background-color: $offblack;
-    border-color: $offblack;
+  cursor: pointer;
+  background-color: $offblack;
+  border-color: $offblack;
 }
 
 // Lower
 .container {
-    font-size: clamp(1.5rem, 10vw, 6rem);
+  font-size: clamp(1.5rem, 10vw, 6rem);
 }
 
 .number {
-    color: $purple;
+  color: $purple;
 }
 
 @media screen and (max-width: 800px) {
-    .upper {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+  .upper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 
-    button {
-        // position: absolute;
-        right: 50%;
-        width: 2.5rem;
-        height: 2.5rem;
-    }
+  button {
+    // position: absolute;
+    right: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 
-    img {
-        width: 2rem;
-        height: auto;
-    }
+  img {
+    width: 2rem;
+    height: auto;
+  }
 }
 
 // Landscape
 @media (orientation: landscape) {
-    main {
-        padding: clamp(1rem, 5vh, 2rem);
-    }
+  main {
+    padding: clamp(1rem, 5vh, 2rem);
+  }
 
-    .container {
-        font-size: clamp(1rem, 5vh, 4rem);
-    }
+  .container {
+    font-size: clamp(1rem, 5vh, 4rem);
+  }
 }
 
 // @media (max-height: 600px) {
