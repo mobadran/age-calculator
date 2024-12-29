@@ -1,13 +1,11 @@
 .attribution {
-  display: none;
   position: absolute;
-  bottom: 7rem;
+  bottom: 12px;
   left: 0;
   right: 0;
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
   font-size: 1.5rem;
-  width: 350px;
+  width: fit-content;
   /* Need a specific value to work */
 }
 .attribution a {
@@ -57,12 +55,11 @@ main {
 }
 
 .upper {
-  font-size: clamp(0.5rem, 2vw, 0.8rem);
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  font-size: 1rem;
   margin-bottom: 1.5rem;
   color: hsl(0, 1%, 44%);
   letter-spacing: 2px;
+  display: flex;
 }
 
 .upper-inps {
@@ -73,7 +70,7 @@ main {
 }
 
 input {
-  font-size: clamp(0.5rem, 3vw, 1.5rem);
+  font-size: 1rem;
   border: 1px solid hsl(0, 0%, 86%);
   border-radius: 5px;
   padding: 10px clamp(0.1rem, 2vw, 20px);
