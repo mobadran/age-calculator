@@ -16,19 +16,19 @@ function calculate(year, month, day) {
     const today = new Date();
     const birthDate = new Date(year, month - 1, day);
 
+    // Calculate age in years
     let ageYears = today.getFullYear() - birthDate.getFullYear();
     let ageMonths = today.getMonth() - birthDate.getMonth();
     let ageDays = today.getDate() - birthDate.getDate();
 
     if (ageMonths < 0 || (ageMonths === 0 && ageDays < 0)) {
         ageYears--;
-        ageMonths += 12;
+        ageMonths += 12; // Adjust months
     }
-
     if (ageDays < 0) {
         const previousMonth = new Date(today.getFullYear(), today.getMonth() - 1, birthDate.getDate());
         ageDays = Math.floor((today - previousMonth) / (1000 * 60 * 60 * 24));
-        ageMonths--;
+        ageMonths--; // Adjust months
     }
 
     return [ageDays, ageMonths, ageYears];
